@@ -2,6 +2,9 @@
   "name": "reshunapanotes-client",
   "version": "0.1.0",
   "private": true,
+  "predeploy": "npm run build",
+  "deploy": "aws s3 sync build/ s3://resh-app-client --delete",
+  "postdeploy": "aws cloudfront create-invalidation --distribution-id EISOBX6Y2WKAW --paths '/*' && aws cloudfront create-invalidation --distribution-id YOUR_WWW_CF_DISTRIBUTION_ID --paths '/*'",
   "dependencies": {
     "aws-amplify": "^1.1.10",
     "formik": "^1.3.1",

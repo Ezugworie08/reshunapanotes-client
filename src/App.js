@@ -16,7 +16,7 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     try {
       await Auth.currentSession();
       this.userHasAuthenticated(true);
@@ -27,7 +27,7 @@ class App extends Component {
     }
 
     this.setState({ isAuthenticating: false });
-  }
+  };
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });

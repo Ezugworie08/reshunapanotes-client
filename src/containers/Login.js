@@ -6,7 +6,7 @@ import { Auth } from 'aws-amplify';
 import LoaderButton from '../components/LoaderButton';
 import './Login.css';
 
-const Basic = props => (
+const Login = props => (
   <div className="Login">
     <Formik
       initialValues={{ email: '', password: '', isLoading: false }}
@@ -33,7 +33,7 @@ const Basic = props => (
         try {
           await Auth.signIn(values.email, values.password);
           props.userHasAuthenticated(true);
-          props.history.push('/');
+          // props.history.push('/');
         } catch (e) {
           console.log('Login is broken =>', e);
           values.isLoading = false;
@@ -102,4 +102,4 @@ const Basic = props => (
   </div>
 );
 
-export default Basic;
+export default Login;
